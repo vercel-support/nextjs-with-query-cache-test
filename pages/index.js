@@ -77,8 +77,8 @@ export async function getStaticProps() {
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
-    // - At most once every second
-    revalidate: 60, // In seconds
+    // - At most once every 180 seconds
+    revalidate: 180, // In seconds
   }
 }
 
