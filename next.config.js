@@ -1,10 +1,10 @@
 module.exports = {
-  async rewrites() {
+  async redirects() {
     return {
       beforeFiles: [
         {
           source: '/news/:slug*',
-          destination: '/news/:slug*?fbclid',
+          destination: '/news/:slug*',
           has: [{ type: 'query', key: 'fbclid' }],
         },
       ]
