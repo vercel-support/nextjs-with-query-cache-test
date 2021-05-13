@@ -18,7 +18,7 @@ function Home({now}) {
 
         <p className={styles.description}>
           Generated at{' '}
-          <code className={styles.code}>{moment(now).fromNow()} [{now}]</code>.
+          <code className={styles.code}>{moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds]</code>.
         </p>
 
         {/* <div className={styles.grid}>
