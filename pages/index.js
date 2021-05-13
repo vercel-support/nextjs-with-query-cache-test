@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import moment from 'moment'
 
-export default function Home() {
+function Home({now}) {
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -15,11 +17,11 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Generated at{' '}
+          <code className={styles.code}>{moment(now).fromNow()} [{now}]</code>.
         </p>
 
-        <div className={styles.grid}>
+        {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -47,7 +49,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
@@ -63,3 +65,22 @@ export default function Home() {
     </div>
   )
 }
+
+
+export async function getStaticProps() {
+  const res = await fetch('https://nextjs-time-api.vercel-support.app/api/time')
+  const {now} = await res.json()
+
+  return {
+    props: {
+      now,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 60, // In seconds
+  }
+}
+
+
+export default Home
