@@ -70,7 +70,9 @@ function Home({now}) {
 export async function getStaticProps() {
   const res = await fetch('https://nextjs-time-api.vercel-support.app/api/time')
   const {now} = await res.json()
-
+  console.log('getStaticProps...')
+  console.log(`now is ${now}`)
+  
   return {
     props: {
       now,
