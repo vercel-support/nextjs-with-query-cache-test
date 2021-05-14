@@ -21,7 +21,7 @@ function Home({now}) {
         </h1>
 
         <p className={styles.description}>
-          Generated <code className={styles.code}>/{slug}</code> at {' '}
+          Generated <code className={styles.code}>/{slug.join('/')}</code> at {' '}
           <code className={styles.code}>{moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds]</code>{!router.isFallback && <> as fallback</>}.
         </p>
 
