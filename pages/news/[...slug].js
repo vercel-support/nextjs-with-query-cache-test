@@ -7,7 +7,7 @@ function Home({now}) {
   
   const router = useRouter()
   const { slug } = router.query
-
+  console.log({router})
   return (
     <div className={styles.container}>
       <Head>
@@ -24,6 +24,26 @@ function Home({now}) {
           Generated <code className={styles.code}>/{slug}</code> at {' '}
           <code className={styles.code}>{moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds]</code>{!router.isFallback && <> as fallback</>}.
         </p>
+
+        <div style={{textAlign: 'left', width: '100%'}}>
+          router.query:
+          <pre>
+            {
+              router ? JSON.stringify(router.query) : ''
+            }
+          </pre>
+        </div>
+
+        <div style={{textAlign: 'left', width: '100%'}}>
+          router.asPath:
+          <pre>
+            {
+              router ? router.asPath : ''
+            }
+          </pre>
+        </div>
+
+        
 
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
