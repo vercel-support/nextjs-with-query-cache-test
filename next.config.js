@@ -3,8 +3,8 @@ module.exports = {
     return {
       beforeFiles: [
         {
-          source: '/news/:slug*',
-          destination: '/news/[...slug]',
+          source: '/:slug*',
+          destination: '/[...slug]',
           has: [{ type: 'query', key: 'fbclid' }],
         },
       ]
