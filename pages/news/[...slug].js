@@ -21,9 +21,18 @@ function Home({now}) {
         </h1>
 
         <p className={styles.description}>
-          Generated <code className={styles.code}>/{slug?.join('/')}</code> at {' '}
-          <code className={styles.code}>{moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds]</code>{!router.isFallback && <> as fallback</>}.
+          Generated <code className={styles.code}>{router.asPath}</code> at {' '}
+          <code className={styles.code}>{moment(now).format()} <span style={{fontSize: 'xx-small'}}>({moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds])</span></code>.
         </p>
+
+        <div style={{textAlign: 'left', width: '100%'}}>
+        router.isFallback:
+          <pre>
+            {
+              router.isFallback ? `true` : `false`
+            }
+          </pre>
+        </div>
 
         <div style={{textAlign: 'left', width: '100%'}}>
           router.query:

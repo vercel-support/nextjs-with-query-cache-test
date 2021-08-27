@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import moment from 'moment'
+import { useRouter } from 'next/router'
 
 function Home({now}) {
-  
+  const router = useRouter()
   return (
     <div className={styles.container}>
       <Head>
@@ -17,8 +18,8 @@ function Home({now}) {
         </h1>
 
         <p className={styles.description}>
-          Generated at{' '}
-          <code className={styles.code}>{moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds]</code>.
+          Generated <code className={styles.code}>{router.asPath}</code> at {' '}
+          <code className={styles.code}>{moment(now).format()} <span style={{fontSize: 'xx-small'}}>({moment(now).fromNow()} [{(Date.now() - now) / 1000} seconds])</span></code>.
         </p>
 
         {/* <div className={styles.grid}>
